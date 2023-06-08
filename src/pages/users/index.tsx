@@ -21,16 +21,16 @@ export default function UserList() {
                 <Box flex="1" borderRadius={8} bg="gray.800" p="8">
                     <Flex mb="8" justify="space-between" align="center">
                         <Heading size="lg" fontWeight="normal">Usuários</Heading>
-                        <Link href="/users/create" passHref>
+                        <Link href="/users/create" passHref legacyBehavior>
                             <Button
-                            as="a"
-                            size="sm"
-                            fontSize="sm"
-                            colorScheme="pink"
-                            leftIcon={<Icon
-                            as={RiAddLine}
-                            fontSize="16"
-                            />}
+                                as="a"
+                                size="sm"
+                                fontSize="sm"
+                                colorScheme="pink"
+                                leftIcon={<Icon
+                                    as={RiAddLine}
+                                    fontSize="16"
+                                />}
                             >
                                 Criar novo
                             </Button>

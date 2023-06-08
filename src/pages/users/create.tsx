@@ -87,7 +87,7 @@ export default function CreateUser() {
                     </VStack>
                     <Flex mt="8" justify="flex-end">
                         <HStack spacing="4">
-                            <Link href="/users" passHref>
+                            <Link href="/users" passHref legacyBehavior>
                                 <Button as="a" colorScheme="whiteAlpha">Cancelar</Button>
                             </Link>
                             <Button
