@@ -8,7 +8,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 type CreateUserFormData = {
-    nome: string;
+    name: string;
     email: string;
     password: string;
     password_confirmation: string;
@@ -24,16 +24,16 @@ const createUserFormSchema = yup.object().shape({
 })
 
 export default function CreateUser() {
-    const { register, handleSubmit, formState } = useForm({
+    const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<CreateUserFormData>({
         resolver:yupResolver(createUserFormSchema)
     })
 
     const handleCreateUser: SubmitHandler<CreateUserFormData> = async (values) => {
-        await new Promise(resolve => setTimeout(resolve));
+        await new Promise(resolve => setTimeout(resolve, 2000));
         console.log(values);
     }
 
-    const { errors } = formState
+    // const { errors } = formState
 
     return (
         <Box>
@@ -57,14 +57,14 @@ export default function CreateUser() {
                             <Input
                               name="name"
                               label="Nome completo"
-                            //   error={errors.name}
+                              error={errors.name}
                               {...register('name')} 
                             />
                             <Input
                               name="email"
                               type="email"
                               label="E-mail"
-                            //   error={errors.email}
+                              error={errors.email}
                               {...register('email')} 
                             />
                         </SimpleGrid>
@@ -73,14 +73,14 @@ export default function CreateUser() {
                               name="password"
                               type="password"
                               label="Senha"
-                            //   error={errors.password}
+                              error={errors.password}
                               {...register('password')} 
                             />
                             <Input
                               name="password_confirmation"
                               type="password"
                               label="Confirmação da senha"
-                            //   error={errors.password_confirmation}
+                              error={errors.password_confirmation}
                               {...register('password_confirmation')} 
                             />
                         </SimpleGrid>
@@ -93,7 +93,7 @@ export default function CreateUser() {
                             <Button
                               type="submit"
                               colorScheme="pink"
-                              isLoading={formState.isSubmitting}
+                              isLoading={isSubmitting}
                             >
                                 Salvar
                             </Button>
