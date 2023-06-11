@@ -22,7 +22,7 @@ export function makeServer() {
                     return `User ${i + 1}`;
                 },
                 email() {
-                    return faker.internet.email();
+                    return faker.internet.email().toLowerCase();
                 },
                 createdAt() {
                     return faker.date.recent({ days: 10 });
